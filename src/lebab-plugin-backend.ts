@@ -11,26 +11,6 @@ export function start(context: theia.PluginContext) {
         id: 'lebab-config',
         label: 'Creat or Open a .lebabrc.json configuration file on your workspace root directory'
     }
-    theia.commands.registerCommand(lebabFormatCommand, (...args: any[]) => {
-        theia.commands.executeCommand('editor.action.formatDocument');
-    });
-    theia.commands.registerCommand(lebabConfigCommand, (...args: any[]) => {
-        const workspaces = theia.workspace.workspaceFolders;
-        let ws;
-        if (workspaces && workspaces[0]) {
-            ws = workspaces[0].uri.path.toString();
-        } else {
-            console.log('Workspace not found, Lebab formatting disabled');
-            theia.window.showErrorMessage('Workspace not found, Lebab formatting disabled');
-        }
-        const configPath = ws + '/.lebabrc.json';
-        const uri = theia.Uri.parse('untitled:' + configPath);
-        theia.workspace.openTextDocument(uri).then(doc => {
-            if (doc) {
-                theia.window.showTextDocument(doc);
-            }
-        });
-    });
     const documentSelector = { language: 'javascript' };
     const documentFormattingProvider = {
         provideDocumentFormattingEdits: async (document: theia.TextDocument, options: theia.FormattingOptions) => {
@@ -48,10 +28,12 @@ export function start(context: theia.PluginContext) {
                 }
                 const configPath = ws + '/.lebabrc.json';
                 const uri = await fs.pathExists(configPath);
+                let configRc;
                 if (!uri) {
-                    return result;
+                    configRc = theia.workspace.getConfiguration('lebab');
+                } else {
+                    configRc = await fs.readJson(configPath) || {};
                 }
-                const configRc = await fs.readJson(configPath) || {};
                 if (!configRc.enabled) {
                     return result;
                 }
@@ -90,6 +72,26 @@ export function start(context: theia.PluginContext) {
     context.subscriptions.push(
         theia.languages.registerDocumentFormattingEditProvider(documentSelector, documentFormattingProvider)
     );
+    theia.commands.registerCommand(lebabFormatCommand, (...args: any[]) => {
+        theia.commands.executeCommand('editor.action.formatDocument');
+    });
+    theia.commands.registerCommand(lebabConfigCommand, (...args: any[]) => {
+        const workspaces = theia.workspace.workspaceFolders;
+        let ws;
+        if (workspaces && workspaces[0]) {
+            ws = workspaces[0].uri.path.toString();
+        } else {
+            console.log('Workspace not found, Lebab formatting disabled');
+            theia.window.showErrorMessage('Workspace not found, Lebab formatting disabled');
+        }
+        const configPath = ws + '/.lebabrc.json';
+        const uri = theia.Uri.parse('untitled:' + configPath);
+        theia.workspace.openTextDocument(uri).then(doc => {
+            if (doc) {
+                theia.window.showTextDocument(doc);
+            }
+        });
+    });
 };
 
 export function stop() {

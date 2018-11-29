@@ -1,38 +1,79 @@
 {
-    "name": "theia-lebab-plugin",
-    "publisher": "devpodio",
-    "keywords": [
-        "devpodio-plugin"
-    ],
-    "version": "0.0.1",
-    "license": "MIT",
-    "files": [
-        "src"
-    ],
-    "devDependencies": {
-        "@devpodio/plugin": "next",
-        "@theia/plugin-packager": "latest",
-        "rimraf": "2.6.2",
-        "typescript": "2.9.2",
-        "typescript-formatter": "7.2.2"
-    },
-    "scripts": {
-        "prepare": "yarn run clean && yarn run build",
-        "clean": "rimraf lib",
-        "format-code": "tsfmt -r",
-        "watch": "tsc -watch",
-        "compile": "tsc",
-        "build": "yarn run format-code && yarn run compile && theia:plugin pack"
-    },
-    "engines": {
-        "theiaPlugin": "next"
-    },
-    "theiaPlugin": {
-        "backend": "lib/lebab-plugin-backend.js"
-    },
-    "dependencies": {
-        "@types/fs-extra": "^5.0.4",
-        "fs-extra": "^7.0.1",
-        "lebab": "^3.0.3"
+  "name": "theia-lebab-plugin",
+  "publisher": "devpodio",
+  "description": "A theia-ide plug that adds lebab formatting support",
+  "keywords": [
+    "devpodio-plugin"
+  ],
+  "version": "0.0.2",
+  "license": "MIT",
+  "files": [
+    "src"
+  ],
+  "devDependencies": {
+    "@devpodio/plugin": "next",
+    "@theia/plugin-packager": "latest",
+    "rimraf": "2.6.2",
+    "typescript": "2.9.2",
+    "typescript-formatter": "7.2.2"
+  },
+  "scripts": {
+    "prepare": "yarn run clean && yarn run build",
+    "clean": "rimraf lib",
+    "format-code": "tsfmt -r",
+    "watch": "tsc -watch",
+    "compile": "tsc",
+    "build": "yarn run format-code && yarn run compile && theia:plugin pack"
+  },
+  "engines": {
+    "theiaPlugin": "next"
+  },
+  "theiaPlugin": {
+    "backend": "lib/lebab-plugin-backend.js"
+  },
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Lebab configuration",
+      "properties": {
+        "lebab.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Lebab formatter"
+        },
+        "lebab.showWarnings": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show warnings"
+        },
+        "lebab.showErrors": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show errors"
+        },
+        "lebab.transforms": {
+          "type": "array",
+          "default": [
+            "arrow",
+            "arg-rest",
+            "obj-method",
+            "obj-shorthand",
+            "class",
+            "let",
+            "includes",
+            "template",
+            "for-of",
+            "exponent",
+            "default-param"
+          ],
+          "description": "Lebab transform options"
+        }
+      }
     }
+  },
+  "dependencies": {
+    "@types/fs-extra": "^5.0.4",
+    "fs-extra": "^7.0.1",
+    "lebab": "^3.0.3"
+  }
 }
