@@ -8,13 +8,13 @@ This repository is made to work on @devpodio fork of Theia.
 
 To make this work on Theia, Clone this repo and replace all instances of `@devpodio` and rebuild.
 
-## How to Install
+### How to Install
 
 - On your theia-ide, press F1 and search for `deploy`
 - Choose `Deploy plugin by id`
 - Enter the path of `theia_lebab_plugin.theia` on your repository. example: `https://github.com/Devpodio/theia-lebab-plugin/blob/master/theia_lebab_plugin.theia`
 
-## Lebab configuration
+### Lebab configuration
 
 - This plugin reads the `.lebabrc.json` file on your workspace root path.
 Sample configuration
@@ -30,5 +30,5 @@ Sample configuration
   ]
 }
 ```
-For more transforms choices, visit [Lebab](https://github.com/lebab/lebab)
+For more transform choices, visit [Lebab](https://github.com/lebab/lebab)
 
