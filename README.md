@@ -1,6 +1,6 @@
 # theia-lebab-plugin
 
-A Theia-plugin to support Lebab formatting.
+A Theia-plugin(read `NOTE` below) to support Lebab formatting.
 
 ## Note
 
