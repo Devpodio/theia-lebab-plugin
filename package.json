@@ -1,7 +1,7 @@
 {
-  "name": "theia-lebab-plugin",
+  "name": "theia-lebabify-plugin",
   "publisher": "devpodio",
-  "description": "A theia-ide plug that adds lebab formatting support",
+  "description": "A theia-ide plug that adds lebab and beautify formatting support",
   "keywords": [
     "devpodio-plugin"
   ],
@@ -29,29 +29,29 @@
     "theiaPlugin": "next"
   },
   "theiaPlugin": {
-    "backend": "lib/lebab-plugin-backend.js"
+    "backend": "lib/lebabify-plugin-backend.js"
   },
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "Lebab configuration",
+      "title": "Lebab and JsBeautify configuration",
       "properties": {
-        "lebab.enable": {
+        "lebabify.enable": {
           "type": "boolean",
           "default": true,
           "description": "Enable Lebab formatter"
         },
-        "lebab.showWarnings": {
+        "lebabify.showWarnings": {
           "type": "boolean",
           "default": false,
           "description": "Show warnings"
         },
-        "lebab.showErrors": {
+        "lebabify.showErrors": {
           "type": "boolean",
           "default": true,
           "description": "Show errors"
         },
-        "lebab.transforms": {
+        "lebabify.transforms": {
           "type": "array",
           "default": [
             "arrow",
@@ -67,11 +67,26 @@
             "default-param"
           ],
           "description": "Lebab transform options"
+        },
+        "lebabify.beautify": {
+          "type": "object",
+          "default": {
+            "indent_size": 2,
+            "eol": "\n",
+            "preserve_newlines": true,
+            "max_preserve_newlines": 2,
+            "space_after_anon_function": true,
+            "brace_style": "collapse,preserve-inline",
+            "unindent_chained-methods": true,
+            "keep_array_indentation": true
+          },
+          "description": "Beautify transform options"
         }
       }
     }
   },
   "dependencies": {
+    "js-beautify": "^1.8.9",
     "lebab": "^3.0.3"
   }
 }
