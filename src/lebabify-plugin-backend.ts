@@ -58,9 +58,7 @@ function formatDocument(document: theia.TextDocument, range?: theia.Range) {
             if (!contentFormatted) {
                 return [];
             }
-            if (content === contentFormatted) {
-                return [];
-            }
+
             return [new theia.TextEdit(range, contentFormatted)];
         }
         return [];
