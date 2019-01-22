@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@devpodio/plugin@^1.0.14":
+  version "1.0.14"
+  resolved "https://npm.devpod.io/@devpodio%2fplugin/-/plugin-1.0.14.tgz#968a87c940a6add3365229a121dad406bc3ce1a6"
+  integrity sha512-5TSPgXxSgBHQu5JwgXunKWtqnRKexirKshpWuzntk7fwKLZqkoIlVpsRbugKnguoZFHQww/+BKVNlO6tvRDokg==
+
 "@theia/plugin-packager@^0.0.1-1539891078":
   version "0.0.1-1539891078"
   resolved "https://registry.yarnpkg.com/@theia/plugin-packager/-/plugin-packager-0.0.1-1539891078.tgz#9ebfd281e655621f835bcb3a176d517ab2a5d613"
@@ -13,11 +18,6 @@
     micromatch "3.1.10"
     read-pkg "4.0.1"
     yargs "12.0.1"
-
-"@theia/plugin@^0.4.0-next.73d23a46":
-  version "0.4.0-next.73d23a46"
-  resolved "https://registry.yarnpkg.com/@theia/plugin/-/plugin-0.4.0-next.73d23a46.tgz#c012aba89c89b033700911d7390653bd0a10f0d9"
-  integrity sha512-qgB5D791S4+6OkBeP524mzsdKG3urYD04peTuFnAJpvvaS1rbdEKJ/Youci7TTEcQV8I2zlLTzdjWL0GK2ai1w==
 
 "@types/events@*":
   version "1.2.0"

@@ -1,4 +1,4 @@
-import * as theia from '@theia/plugin';
+import * as theia from '@devpodio/plugin';
 import lebab = require('lebab');
 import jsbeautify = require('js-beautify');
 
