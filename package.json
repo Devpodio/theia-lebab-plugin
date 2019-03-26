@@ -5,7 +5,7 @@
   "keywords": [
     "devpodio-plugin"
   ],
-  "version": "1.1.1",
+  "version": "1.1.2",
   "license": "MIT",
   "files": [
     "src"
@@ -34,24 +34,24 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "Lebab and JsBeautify configuration",
+      "title": "Lebab formatter configuration",
       "properties": {
-        "lebabify.enable": {
+        "lebab.enable": {
           "type": "boolean",
           "default": true,
           "description": "Enable Lebab formatter"
         },
-        "lebabify.showWarnings": {
+        "lebab.showWarnings": {
           "type": "boolean",
           "default": false,
           "description": "Show warnings"
         },
-        "lebabify.showErrors": {
+        "lebab.showErrors": {
           "type": "boolean",
           "default": true,
           "description": "Show errors"
         },
-        "lebabify.transforms": {
+        "lebab.transforms": {
           "type": "array",
           "default": [
             "arrow",
@@ -68,17 +68,31 @@
           ],
           "description": "Lebab transform options"
         },
-        "lebabify.beautify": {
+        "lebab.beautify": {
           "type": "object",
           "default": {
             "indent_size": 2,
+            "indent_char": " ",
+            "indent_with_tabs": false,
             "eol": "\n",
+            "end_with_newline": true,
+            "indent_level": 0,
             "preserve_newlines": true,
             "max_preserve_newlines": 2,
-            "space_after_anon_function": true,
+            "space_in_paren": true,
+            "space_in_empty_paren": false,
+            "jslint_happy": false,
+            "space_after_anon_function": false,
+            "space_after_named_function": false,
             "brace_style": "collapse,preserve-inline",
             "unindent_chained_methods": true,
-            "keep_array_indentation": true
+            "keep_array_indentation": true,
+            "break_chained_methods": false,
+            "unescape_strings": false,
+            "wrap_line_length": 0,
+            "comma_first": false,
+            "operator_position": "before-newline",
+            "indent_empty_lines": false
           },
           "description": "Beautify transform options"
         }
