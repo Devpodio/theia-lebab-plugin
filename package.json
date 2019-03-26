@@ -1,18 +1,18 @@
 {
-  "name": "theia-lebabify-plugin",
+  "name": "theia-lebab-plugin",
   "publisher": "devpodio",
   "description": "A theia-ide plug that adds lebab and beautify formatting support",
   "keywords": [
     "devpodio-plugin"
   ],
-  "version": "1.0.1",
+  "version": "1.1.0",
   "license": "MIT",
   "files": [
     "src"
   ],
   "devDependencies": {
-    "@theia/plugin": "^0.4.0-next.73d23a46",
-    "@theia/plugin-packager": "^0.0.1-1539891078",
+    "@theia/plugin": "^0.5.0-next.cea1cf93",
+    "@theia/plugin-packager": "^0.0.1-1551941037",
     "rimraf": "^2.6.2",
     "typescript": "2.9.2",
     "typescript-formatter": "7.2.2"
@@ -29,7 +29,7 @@
     "theiaPlugin": "next"
   },
   "theiaPlugin": {
-    "backend": "lib/lebabify-plugin-backend.js"
+    "backend": "lib/lebab-plugin.js"
   },
   "contributes": {
     "configuration": {
@@ -77,7 +77,7 @@
             "max_preserve_newlines": 2,
             "space_after_anon_function": true,
             "brace_style": "collapse,preserve-inline",
-            "unindent_chained-methods": true,
+            "unindent_chained_methods": true,
             "keep_array_indentation": true
           },
           "description": "Beautify transform options"
@@ -86,7 +86,7 @@
     }
   },
   "dependencies": {
-    "js-beautify": "^1.8.9",
-    "lebab": "^3.0.3"
+    "js-beautify": "^1.9.1",
+    "lebab": "^3.0.4"
   }
 }
