@@ -20,20 +20,20 @@ function fullDocumentRange(document: TextDocument): Range {
   return new Range(0, 0, lastLineId, document.lineAt(lastLineId).text.length);
 }
 
-function formatDocument(text: string, { fileName, languageId, uri }: TextDocument): Promise<string> {
+function format(text: string, { fileName, languageId, uri }: TextDocument): Promise<string> {
   const lebabConfig: LebabConfig = getConfig(uri);
   const beautifier = jsbeautify.js;
-  if (!lebabConfig.enable || languageId !== LebabDocumentSelector.language) {
+  if (!lebabConfig.format.enable || languageId !== LebabDocumentSelector.language) {
     return Promise.resolve(text);
   }
   return safeExecution(
     () => {
-      const { code, warning } = lebab.transform(text, lebabConfig.transforms);
-      if (lebabConfig.showWarnings && warning) {
+      const { code, warning } = lebab.transform(text, lebabConfig.options.transforms);
+      if (lebabConfig.format.showWarnings && warning) {
         addToOutput(warning);
       }
-      return beautifier(code, lebabConfig.beautify);
-    }, text, fileName, lebabConfig.showErrors);
+      return beautifier(code, lebabConfig.options.beautify);
+    }, text, fileName, lebabConfig.format.showErrors);
 }
 
 class LebabProvider implements DocumentFormattingEditProvider {
@@ -44,10 +44,8 @@ class LebabProvider implements DocumentFormattingEditProvider {
     return this._provideEdits(document);
   }
   private _provideEdits(document: TextDocument): Promise<TextEdit[]> {
-    if (!document.isUntitled) {
-      return Promise.resolve([]);
-    }
-    return formatDocument(document.getText(), document).then((code: string) => [
+
+    return format(document.getText(), document).then((code: string) => [
       TextEdit.replace(fullDocumentRange(document), code)
     ]);
   }

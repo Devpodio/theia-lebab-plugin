@@ -22,11 +22,16 @@ interface BeautifyConfig {
   operator_position: string;
   indent_empty_lines: boolean;
 }
-
-export interface LebabConfig {
+interface LebabFormat {
   enable: boolean;
   showWarnings: boolean;
   showErrors: boolean;
+}
+interface LebabOptions {
   transforms: string[];
   beautify: BeautifyConfig;
+}
+export interface LebabConfig {
+  format: LebabFormat;
+  options: LebabOptions;
 }

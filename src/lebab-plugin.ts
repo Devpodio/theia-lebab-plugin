@@ -3,18 +3,13 @@ import {
   languages,
   PluginContext,
   workspace,
-  DocumentFilter,
   DocumentSelector,
   Disposable,
 } from '@theia/plugin';
 import LebabProvider from './lebab-edit-provider';
 import { setupErrorHandler, registerDisposables, LebabDocumentSelector } from './errorHandler';
 
-interface Selectors {
-  languageSelector: DocumentSelector;
-}
 let formatterHandler: undefined | Disposable;
-
 
 function disposeHandlers() {
   if (formatterHandler) {
@@ -23,22 +18,23 @@ function disposeHandlers() {
   formatterHandler = undefined;
 }
 
-function selectors(): Selectors {
-  const languageSelector = [LebabDocumentSelector];
+function selectors(): DocumentSelector | undefined {
+  const languageSelector = LebabDocumentSelector;
   if (workspace.workspaceFolders === undefined) {
-    return {
-      languageSelector: languageSelector
-    };
+    return undefined;
   }
-  const fileLanguageSelector: DocumentFilter[] = languageSelector;
-  return { languageSelector: fileLanguageSelector }
+  return languageSelector
 }
 
 export function start(context: PluginContext) {
   const editProvider = new LebabProvider();
   function registerFormatter() {
     disposeHandlers();
-    const { languageSelector } = selectors();
+    const languageSelector = selectors();
+    if (!languageSelector) {
+      return;
+    }
+
     formatterHandler = languages.registerDocumentFormattingEditProvider(
       languageSelector,
       editProvider
@@ -53,4 +49,7 @@ export function start(context: PluginContext) {
     setupErrorHandler(),
     ...registerDisposables()
   );
+}
+export function stop() {
+
 }
