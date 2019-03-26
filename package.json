@@ -5,7 +5,7 @@
   "keywords": [
     "devpodio-plugin"
   ],
-  "version": "1.1.2",
+  "version": "1.1.3",
   "license": "MIT",
   "files": [
     "src"
@@ -29,29 +29,36 @@
     "theiaPlugin": "next"
   },
   "theiaPlugin": {
-    "backend": "lib/lebab-plugin.js"
+    "backend": "./lib/lebab-plugin.js"
   },
+  "categories": [
+    "Formatters"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "enableProposedApi": true,
+  "main": "./lib/lebab-plugin.js",
   "contributes": {
     "configuration": {
-      "type": "object",
       "title": "Lebab formatter configuration",
       "properties": {
-        "lebab.enable": {
+        "lebab.format.enable": {
           "type": "boolean",
           "default": true,
           "description": "Enable Lebab formatter"
         },
-        "lebab.showWarnings": {
+        "lebab.format.showWarnings": {
           "type": "boolean",
           "default": false,
           "description": "Show warnings"
         },
-        "lebab.showErrors": {
+        "lebab.format.showErrors": {
           "type": "boolean",
           "default": true,
           "description": "Show errors"
         },
-        "lebab.transforms": {
+        "lebab.options.transforms": {
           "type": "array",
           "default": [
             "arrow",
@@ -68,13 +75,13 @@
           ],
           "description": "Lebab transform options"
         },
-        "lebab.beautify": {
+        "lebab.options.beautify": {
           "type": "object",
           "default": {
             "indent_size": 2,
             "indent_char": " ",
             "indent_with_tabs": false,
-            "eol": "\n",
+            "eol": "\\n",
             "end_with_newline": true,
             "indent_level": 0,
             "preserve_newlines": true,
