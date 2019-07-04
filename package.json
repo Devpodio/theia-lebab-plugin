@@ -23,7 +23,9 @@
     "format-code": "tsfmt -r",
     "watch": "tsc -watch",
     "compile": "tsc",
-    "build": "yarn run format-code && yarn run compile && theia:plugin pack"
+    "build": "yarn run format-code && yarn run compile && theia:plugin pack",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "engines": {
     "theiaPlugin": "next"
@@ -108,6 +110,8 @@
   },
   "dependencies": {
     "js-beautify": "^1.9.1",
-    "lebab": "^3.0.4"
-  }
+    "lebab": "^3.0.4",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
