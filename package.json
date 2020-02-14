@@ -5,14 +5,14 @@
   "keywords": [
     "devpodio-plugin"
   ],
-  "version": "1.0.2",
+  "version": "1.1.4",
   "license": "MIT",
   "files": [
     "src"
   ],
   "devDependencies": {
-    "@devpodio/plugin": "^1.0.14",
-    "@theia/plugin-packager": "^0.0.1-1539891078",
+    "@devpodio/plugin": "^0.6.1",
+    "@theia/plugin-packager": "^0.0.1-1551941037",
     "rimraf": "^2.6.2",
     "typescript": "2.9.2",
     "typescript-formatter": "7.2.2"
@@ -23,7 +23,7 @@
     "format-code": "tsfmt -r",
     "watch": "tsc -watch",
     "compile": "tsc",
-    "build": "yarn run format-code && yarn run compile && theia:plugin pack"
+    "build": "yarn run format-code && yarn run compile && theia-plugin pack"
   },
   "engines": {
     "theiaPlugin": "next"
