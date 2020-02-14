@@ -1,5 +1,5 @@
 {
-  "name": "theia-lebabify-plugin",
+  "name": "devpodio-lebabify-plugin",
   "publisher": "devpodio",
   "description": "A theia-ide plug that adds lebab and beautify formatting support",
   "keywords": [
@@ -11,7 +11,7 @@
     "src"
   ],
   "devDependencies": {
-    "@devpodio/plugin": "^0.6.1",
+    "@devpodio/plugin": "^0.6.2",
     "@theia/plugin-packager": "^0.0.1-1551941037",
     "rimraf": "^2.6.2",
     "typescript": "2.9.2",

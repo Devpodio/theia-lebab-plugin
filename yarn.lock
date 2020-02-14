@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@devpodio/plugin@^0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@devpodio/plugin/-/plugin-0.6.1.tgz#5a725fb6a2fbd92b084ca5fde63a4bab9141f036"
-  integrity sha512-FTVxYq372MQIV4wTU5eiTruUKXYiIE08KmfMla647AMFx/gXPdhEucUUj7+scjmyLu8+XvcXBl6eprrQ0UnxfQ==
+"@devpodio/plugin@^0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@devpodio/plugin/-/plugin-0.6.2.tgz#ad433c6e9cc69ab13a8cff85766c37b903248030"
+  integrity sha512-VW7DGT/cJKZS84eC1FCyA/DxK9EdxcRUJip4J1wqzR+aDb4HdeTIsNRsGEqjK9MkPjzfUMr0fa1sfKrO/04S4w==
 
 "@theia/plugin-packager@^0.0.1-1551941037":
   version "0.0.1-1551941037"
