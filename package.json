@@ -18,12 +18,13 @@
     "typescript-formatter": "7.2.2"
   },
   "scripts": {
-    "prepare": "yarn run clean && yarn run build",
+    "prepare": "yarn run snyk-protect && yarn run clean && yarn run build",
     "clean": "rimraf lib",
     "format-code": "tsfmt -r",
     "watch": "tsc -watch",
     "compile": "tsc",
-    "build": "yarn run format-code && yarn run compile && theia:plugin pack"
+    "build": "yarn run format-code && yarn run compile && theia:plugin pack",
+    "snyk-protect": "snyk protect"
   },
   "engines": {
     "theiaPlugin": "next"
@@ -108,6 +109,8 @@
   },
   "dependencies": {
     "js-beautify": "^1.9.1",
-    "lebab": "^3.0.4"
-  }
+    "lebab": "^3.0.4",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
