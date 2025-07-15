@@ -107,7 +107,7 @@
     }
   },
   "dependencies": {
-    "js-beautify": "^1.9.1",
-    "lebab": "^3.0.4"
+    "js-beautify": "^1.14.10",
+    "lebab": "^3.2.0"
   }
 }
